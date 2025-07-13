@@ -28,6 +28,7 @@ type prometheusStats struct {
 
 	// Dedup WARC metrics
 	dataTotalBytes               *prometheus.GaugeVec
+	dataTotalBytesContentLength  *prometheus.GaugeVec
 	cdxDedupeTotalBytes          *prometheus.GaugeVec
 	doppelgangerDedupeTotalBytes *prometheus.GaugeVec
 	localDedupeTotalBytes        *prometheus.GaugeVec
@@ -104,6 +105,11 @@ func newPrometheusStats() *prometheusStats {
 			prometheus.GaugeOpts{Name: config.Get().PrometheusPrefix + "total_bytes_downloaded", Help: "Total number of bytes downloaded through gowarc"},
 			[]string{"project", "hostname", "version"},
 		),
+		// Potentially temporary "Content-Length" bytes downloaded metric
+		dataTotalBytesContentLength: prometheus.NewGaugeVec(
+			prometheus.GaugeOpts{Name: config.Get().PrometheusPrefix + "total_bytes_downloaded_content_length", Help: "Total number of bytes downloaded through gowarc as measured by Content-Length header"},
+			[]string{"project", "hostname", "version"},
+		),
 		cdxDedupeTotalBytes: prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{Name: config.Get().PrometheusPrefix + "total_bytes_cdx_dedupe", Help: "Total number of bytes deduplicated by CDX"},
 			[]string{"project", "hostname", "version"},
@@ -150,6 +156,7 @@ func registerPrometheusMetrics() {
 
 	// Register dedup WARC metrics
 	prometheus.MustRegister(globalPromStats.dataTotalBytes)
+	prometheus.MustRegister(globalPromStats.dataTotalBytesContentLength)
 	prometheus.MustRegister(globalPromStats.cdxDedupeTotalBytes)
 	prometheus.MustRegister(globalPromStats.doppelgangerDedupeTotalBytes)
 	prometheus.MustRegister(globalPromStats.localDedupeTotalBytes)
