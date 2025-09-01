@@ -11,3 +11,6 @@ ZENO-*
 *.log
 .old/
 *.warc.*
+zeno
+zeno-static
+.dockerignore
