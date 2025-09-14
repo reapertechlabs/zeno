@@ -94,53 +94,45 @@ type Config struct {
 	CertValidation                  bool          `mapstructure:"cert-validation"`
 	DisableAssetsCapture            bool          `mapstructure:"disable-assets-capture"`
 	UseHQ                           bool          // Special field to check if HQ is enabled depending on the command called
-
-	// Headless
-	Headless                 bool     `mapstructure:"headless"`
-	HeadlessHeadful          bool     `mapstructure:"headless-headful"`
-	HeadlessTrace            bool     `mapstructure:"headless-trace"`
-	HeadlessChromiumRevision int      `mapstructure:"headless-chromium-revision"`
-	HeadlessChromiumBin      string   `mapstructure:"headless-chromium-bin"`
-	HeadlessDevTools         bool     `mapstructure:"headless-dev-tools"`
-	HeadlessStealth          bool     `mapstructure:"headless-stealth"`
-	HeadlessUserMode         bool     `mapstructure:"headless-user-mode"`
-	HeadlessUserDataDir      string   `mapstructure:"headless-user-data-dir"`
-	HeadlessAllowedMethods   []string `mapstructure:"headless-allowed-methods"`
-
-	HeadlessPageTimeout       time.Duration `mapstructure:"headless-page-timeout"`
-	HeadlessPageLoadTimeout   time.Duration `mapstructure:"headless-page-load-timeout"`
-	HeadlessPagePostLoadDelay time.Duration `mapstructure:"headless-page-post-load-delay"`
-
-	HeadlessBehaviors       []string      `mapstructure:"headless-behaviors"`
-	HeadlessBehaviorTimeout time.Duration `mapstructure:"headless-behavior-timeout"`
-
-	// Network
-	Proxy         string `mapstructure:"proxy"`
-	RandomLocalIP bool   `mapstructure:"random-local-ip"`
-	DisableIPv4   bool   `mapstructure:"disable-ipv4"`
-	DisableIPv6   bool   `mapstructure:"disable-ipv6"`
-	IPv6AnyIP     bool   `mapstructure:"ipv6-anyip"`
-
-	// Rate limiting
-	DisableRateLimit          bool          `mapstructure:"disable-rate-limit"`
-	RateLimitCapacity         float64       `mapstructure:"rate-limit-capacity"`
-	RateLimitRefillRate       float64       `mapstructure:"rate-limit-refill-rate"`
-	RateLimitCleanupFrequency time.Duration `mapstructure:"rate-limit-cleanup-frequency"`
-
-	// Logging
-	NoStdoutLogging  bool   `mapstructure:"no-stdout-log"`
-	NoStderrLogging  bool   `mapstructure:"no-stderr-log"`
-	NoColorLogging   bool   `mapstructure:"no-color-logs"`
-	NoFileLogging    bool   `mapstructure:"no-log-file"`
-	E2ELogging       bool   `mapstructure:"log-e2e"`
-	E2ELevel         string `mapstructure:"log-e2e-level"`
-	StdoutLogLevel   string `mapstructure:"log-level"`
-	TUI              bool   `mapstructure:"tui"`
-	TUILogLevel      string `mapstructure:"tui-log-level"`
-	LogFileLevel     string `mapstructure:"log-file-level"`
-	LogFileOutputDir string `mapstructure:"log-file-output-dir"`
-	LogFilePrefix    string `mapstructure:"log-file-prefix"`
-	LogFileRotation  string `mapstructure:"log-file-rotation"`
+	HQOutlinksProject               string        `mapstructure:"hq-outlinks-project"` //  Optional 2nd HQ instance just to gather outlinks to a different project
+	HQOutlinksHopLimit              int           `mapstructure:"hq-outlinks-hop-limit"`
+	Headless                        bool          `mapstructure:"headless"` // Headless
+	HeadlessHeadful                 bool          `mapstructure:"headless-headful"`
+	HeadlessTrace                   bool          `mapstructure:"headless-trace"`
+	HeadlessChromiumRevision        int           `mapstructure:"headless-chromium-revision"`
+	HeadlessChromiumBin             string        `mapstructure:"headless-chromium-bin"`
+	HeadlessDevTools                bool          `mapstructure:"headless-dev-tools"`
+	HeadlessStealth                 bool          `mapstructure:"headless-stealth"`
+	HeadlessUserMode                bool          `mapstructure:"headless-user-mode"`
+	HeadlessUserDataDir             string        `mapstructure:"headless-user-data-dir"`
+	HeadlessAllowedMethods          []string      `mapstructure:"headless-allowed-methods"`
+	HeadlessPageTimeout             time.Duration `mapstructure:"headless-page-timeout"`
+	HeadlessPageLoadTimeout         time.Duration `mapstructure:"headless-page-load-timeout"`
+	HeadlessPagePostLoadDelay       time.Duration `mapstructure:"headless-page-post-load-delay"`
+	HeadlessBehaviors               []string      `mapstructure:"headless-behaviors"`
+	HeadlessBehaviorTimeout         time.Duration `mapstructure:"headless-behavior-timeout"`
+	Proxy                           string        `mapstructure:"proxy"` // Network
+	RandomLocalIP                   bool          `mapstructure:"random-local-ip"`
+	DisableIPv4                     bool          `mapstructure:"disable-ipv4"`
+	DisableIPv6                     bool          `mapstructure:"disable-ipv6"`
+	IPv6AnyIP                       bool          `mapstructure:"ipv6-anyip"`
+	DisableRateLimit                bool          `mapstructure:"disable-rate-limit"` // Rate limiting
+	RateLimitCapacity               float64       `mapstructure:"rate-limit-capacity"`
+	RateLimitRefillRate             float64       `mapstructure:"rate-limit-refill-rate"`
+	RateLimitCleanupFrequency       time.Duration `mapstructure:"rate-limit-cleanup-frequency"`
+	NoStdoutLogging                 bool          `mapstructure:"no-stdout-log"` // Logging
+	NoStderrLogging                 bool          `mapstructure:"no-stderr-log"`
+	NoColorLogging                  bool          `mapstructure:"no-color-logs"`
+	NoFileLogging                   bool          `mapstructure:"no-log-file"`
+	E2ELogging                      bool          `mapstructure:"log-e2e"`
+	E2ELevel                        string        `mapstructure:"log-e2e-level"`
+	StdoutLogLevel                  string        `mapstructure:"log-level"`
+	TUI                             bool          `mapstructure:"tui"`
+	TUILogLevel                     string        `mapstructure:"tui-log-level"`
+	LogFileLevel                    string        `mapstructure:"log-file-level"`
+	LogFileOutputDir                string        `mapstructure:"log-file-output-dir"`
+	LogFilePrefix                   string        `mapstructure:"log-file-prefix"`
+	LogFileRotation                 string        `mapstructure:"log-file-rotation"`
 
 	// Profiling
 	PyroscopeAddress string `mapstructure:"pyroscope-address"`
@@ -211,6 +203,7 @@ func InitConfig() error {
 		config.SetContext(context.Background())
 
 		// Check if a config file is provided via flag
+		configFileProvided := viper.GetString("config-file") != ""
 		if configFile := viper.GetString("config-file"); configFile != "" {
 			viper.SetConfigFile(configFile)
 		} else {
@@ -230,13 +223,30 @@ func InitConfig() error {
 		viper.SetEnvKeyReplacer(replacer)
 		viper.AutomaticEnv()
 
-		if err = viper.ReadInConfig(); err == nil {
+		err = viper.ReadInConfig()
+		if err != nil {
+			if configFileProvided {
+				// User explicitly provided a config file, any error should be reported
+				err = fmt.Errorf("error reading config file: %w", err)
+				return
+			} else {
+				// Using default config file location
+				// Only report errors for parsing issues, not for file not found
+				if _, isNotFoundError := err.(viper.ConfigFileNotFoundError); !isNotFoundError {
+					// Config file exists but has errors (e.g., invalid YAML)
+					err = fmt.Errorf("error reading config file: %w", err)
+					return
+				}
+				// Config file doesn't exist at default location, which is OK
+				err = nil // Clear the error since file not found is OK for default config
+			}
+		} else {
 			fmt.Println("Using config file:", viper.ConfigFileUsed())
 		}
 
 		if viper.GetBool("consul-config") && viper.GetString("consul-address") != "" {
 			var consulAddress *url.URL
-			consulAddress, err = url.Parse(viper.GetString("consul-address"))
+			consulAddress, err := url.Parse(viper.GetString("consul-address"))
 			if err != nil {
 				return
 			}
@@ -246,7 +256,7 @@ func InitConfig() error {
 			viper.SetConfigType(filepath.Ext(consulFile))
 			viper.SetConfigName(strings.TrimSuffix(consulFile, filepath.Ext(consulFile)))
 
-			if err = viper.ReadInConfig(); err == nil {
+			if err := viper.ReadInConfig(); err == nil {
 				fmt.Println("Using config file:", viper.ConfigFileUsed())
 			}
 		}

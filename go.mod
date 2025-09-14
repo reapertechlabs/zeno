@@ -24,6 +24,7 @@ require (
 	github.com/ncruces/go-sqlite3 v0.29.0
 	github.com/pdfcpu/pdfcpu v0.11.0
 	github.com/philippgille/gokv/leveldb v0.7.0
+	github.com/plar/go-adaptive-radix-tree/v2 v2.0.3
 	github.com/prometheus/client_golang v1.23.2
 	github.com/rivo/tview v0.42.0
 	github.com/samber/slog-multi v1.5.0
@@ -38,18 +39,18 @@ require (
 	golang.org/x/sys v0.36.0
 	golang.org/x/text v0.29.0
 	mvdan.cc/xurls/v2 v2.6.0
-	rtlabs.cloud/gowarc v0.8.95
+	rtlabs.cloud/gowarc v0.8.97
 )
 
 require (
-	github.com/andybalholm/brotli v1.1.1 // indirect
+	github.com/andybalholm/brotli v1.0.6 // indirect
 	github.com/andybalholm/cascadia v1.3.3 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dolthub/maphash v0.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
-	github.com/gammazero/deque v1.0.0 // indirect
+	github.com/gammazero/deque v0.2.1 // indirect
 	github.com/gdamore/encoding v1.0.1 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect

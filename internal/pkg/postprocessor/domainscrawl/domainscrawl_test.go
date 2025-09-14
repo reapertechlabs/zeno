@@ -1,6 +1,10 @@
 package domainscrawl
 
 import (
+	"bufio"
+	"os"
+	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -31,14 +35,13 @@ func TestIsNaiveDomain(t *testing.T) {
 	}
 }
 
-// Test isSubdomainOrExactMatch function
-func TestIsSubdomainOrExactMatch(t *testing.T) {
+// Test isSubdomain function
+func TestIsSubdomain(t *testing.T) {
 	tests := []struct {
 		host     string
 		domain   string
 		expected bool
 	}{
-		{"example.com", "example.com", true},      // Exact match
 		{"sub.example.com", "example.com", true},  // Subdomain match
 		{"example.com", "sub.example.com", false}, // Not a subdomain
 		{"example.org", "example.com", false},     // Different domain
@@ -46,9 +49,9 @@ func TestIsSubdomainOrExactMatch(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.host+"_"+tt.domain, func(t *testing.T) {
-			result := isSubdomainOrExactMatch(tt.host, tt.domain)
+			result := isSubdomain(tt.host, tt.domain)
 			if result != tt.expected {
-				t.Errorf("isSubdomainOrExactMatch(%q, %q) = %v, expected %v", tt.host, tt.domain, result, tt.expected)
+				t.Errorf("isSubdomain(%q, %q) = %v, expected %v", tt.host, tt.domain, result, tt.expected)
 			}
 		})
 	}
@@ -56,17 +59,17 @@ func TestIsSubdomainOrExactMatch(t *testing.T) {
 
 // Test Enabled function
 func TestEnabled(t *testing.T) {
-	Reset()
-	if Enabled() {
+	matcher := NewMatcher()
+	if matcher.Enabled() {
 		t.Error("Enabled() = true, expected false")
 	}
 
-	err := AddElements([]string{"example.com"}, nil)
+	err := matcher.AddElements([]string{"example.com"}, nil)
 	if err != nil {
 		t.Fatalf("Failed to add elements: %v", err)
 	}
 
-	if !Enabled() {
+	if !matcher.Enabled() {
 		t.Error("Enabled() = false, expected true")
 	}
 }
@@ -125,47 +128,44 @@ func TestAddElements(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			Reset()
-			err := AddElements(tt.elements, nil)
+			matcher := NewMatcher()
+			err := matcher.AddElements(tt.elements, nil)
 			if (err != nil) != tt.expectErr {
 				t.Errorf("AddElements() error = %v, expectErr = %v", err, tt.expectErr)
 			}
 
 			// Check naive domains - convert map to slice for comparison
-			domainMap := globalMatcher.domains
-			domainSlice := make([]string, 0, len(domainMap))
-			for domain := range domainMap {
-				domainSlice = append(domainSlice, domain)
-			}
+			domainMap := matcher.domains
+			domainSlice := domainMap.Range()
 
 			if len(tt.expectNaiveDomains) != len(domainSlice) {
 				t.Errorf("len(domains) = %d, expected %d", len(domainSlice), len(tt.expectNaiveDomains))
 			} else {
 				for _, expectedDomain := range tt.expectNaiveDomains {
-					if _, found := domainMap[expectedDomain]; !found {
+					if !domainMap.ExactMatch(expectedDomain) {
 						t.Errorf("expected domain %q not found in domains", expectedDomain)
 					}
 				}
 			}
 
 			// Check URLs
-			if len(tt.expectURLs) != len(globalMatcher.urls) {
-				t.Errorf("len(globalMatcher.urls) = %d, expected %d", len(globalMatcher.urls), len(tt.expectURLs))
+			if len(tt.expectURLs) != len(matcher.urls) {
+				t.Errorf("len(matcher.urls) = %d, expected %d", len(matcher.urls), len(tt.expectURLs))
 			} else {
 				for i, url := range tt.expectURLs {
-					if globalMatcher.urls[i].String() != url {
-						t.Errorf("globalMatcher.urls[%d] = %q, expected %q", i, globalMatcher.urls[i].String(), url)
+					if matcher.urls[i].String() != url {
+						t.Errorf("matcher.urls[%d] = %q, expected %q", i, matcher.urls[i].String(), url)
 					}
 				}
 			}
 
 			// Check regexes
-			if len(tt.expectRegexes) != len(globalMatcher.regexes) {
-				t.Errorf("len(globalMatcher.regexes) = %d, expected %d", len(globalMatcher.regexes), len(tt.expectRegexes))
+			if len(tt.expectRegexes) != len(matcher.regexes) {
+				t.Errorf("len(matcher.regexes) = %d, expected %d", len(matcher.regexes), len(tt.expectRegexes))
 			} else {
 				for i, re := range tt.expectRegexes {
-					if globalMatcher.regexes[i].String() != re {
-						t.Errorf("globalMatcher.regexes[%d] = %q, expected %q", i, globalMatcher.regexes[i].String(), re)
+					if matcher.regexes[i].String() != re {
+						t.Errorf("matcher.regexes[%d] = %q, expected %q", i, matcher.regexes[i].String(), re)
 					}
 				}
 			}
@@ -263,17 +263,82 @@ func TestMatch(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			Reset()
+			matcher := NewMatcher()
 
-			err := AddElements(tt.elements, nil)
+			err := matcher.AddElements(tt.elements, nil)
 			if err != nil {
 				t.Fatalf("Failed to add elements: %v", err)
 			}
 
-			result := Match(tt.rawURL)
+			result := matcher.Match(tt.rawURL)
 			if result != tt.expected {
 				t.Errorf("Match(%q) = %v, expected %v", tt.rawURL, result, tt.expected)
 			}
 		})
+	}
+}
+
+func TestAddElements_FromFile_HappyPath(t *testing.T) {
+	t.Parallel()
+
+	matcher := NewMatcher()
+
+	// Create a temp file with one domain, one full URL, one regex
+	dir := t.TempDir()
+	path := filepath.Join(dir, "patterns.txt")
+	content := strings.Join([]string{
+		"example.com",
+		"https://example.org/",
+		`^https?://(www\.)?example\.net/.*$`,
+	}, "\n")
+	if err := os.WriteFile(path, []byte(content), 0o600); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := matcher.AddElements(nil, []string{path}); err != nil {
+		t.Fatalf("AddElements(file) error = %v; want nil", err)
+	}
+
+	// Verify we ingested exactly 1 domain, 1 URL, 1 regex from the file
+	if got, want := matcher.domains.Size(), 1; got != want {
+		t.Fatalf("domains.Size() = %d; want %d", got, want)
+	}
+	if got, want := len(matcher.urls), 1; got != want {
+		t.Fatalf("len(urls) = %d; want %d", got, want)
+	}
+	if got, want := len(matcher.regexes), 1; got != want {
+		t.Fatalf("len(regexes) = %d; want %d", got, want)
+	}
+}
+
+func TestAddElements_FileOpenError(t *testing.T) {
+	t.Parallel()
+
+	matcher := NewMatcher()
+
+	// Point to a non-existent file → os.Open should fail and AddElements must return error
+	err := matcher.AddElements(nil, []string{"/definitely/does/not/exist.txt"})
+	if err == nil {
+		t.Fatalf("AddElements(nonexistent) error = nil; want non-nil")
+	}
+}
+
+func TestAddElements_FileScannerErrTooLong(t *testing.T) {
+	t.Parallel()
+
+	matcher := NewMatcher()
+
+	// Create a file with a single line longer than bufio.Scanner's token limit
+	dir := t.TempDir()
+	path := filepath.Join(dir, "too_long.txt")
+
+	longLine := strings.Repeat("a", bufio.MaxScanTokenSize+1) // triggers ErrTooLong
+	if err := os.WriteFile(path, []byte(longLine), 0o600); err != nil {
+		t.Fatal(err)
+	}
+
+	err := matcher.AddElements(nil, []string{path})
+	if err == nil {
+		t.Fatalf("AddElements(too-long-line) error = nil; want non-nil (scanner.Err)")
 	}
 }
