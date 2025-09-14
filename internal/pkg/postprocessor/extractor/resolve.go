@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 // resolveURL takes a URL string to resolve, a parent URL, and a base.

@@ -63,14 +63,14 @@ func (d *rotatedFile) rotateFile() {
 
 	// Check if the directory exists, if not create it
 	if _, err := os.Stat(d.config.Dir); os.IsNotExist(err) {
-		err = os.MkdirAll(d.config.Dir, 0755)
+		err = os.MkdirAll(d.config.Dir, 0o755)
 		if err != nil {
 			log.Fatalf("Failed to create log directory: %v", err)
 		}
 	}
 
 	filename := fmt.Sprintf("%s/%s-%s.log", d.config.Dir, d.config.Prefix, time.Now().Format("2006.01.02T15-04"))
-	file, err := os.OpenFile(filename, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o644)
 	if err != nil {
 		log.Fatalf("Failed to open log file: %v", err)
 	}

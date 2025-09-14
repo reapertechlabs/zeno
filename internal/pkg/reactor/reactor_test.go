@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestReactor_E2E_Balanced(t *testing.T) {

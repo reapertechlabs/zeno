@@ -11,9 +11,10 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
-	warc "github.com/internetarchive/gowarc"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 var (

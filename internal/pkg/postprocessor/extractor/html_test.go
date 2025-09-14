@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	generalarchiver "github.com/internetarchive/Zeno/internal/pkg/archiver/general"
-	"github.com/internetarchive/Zeno/pkg/models"
+	generalarchiver "github.com/reapertechlabs/zeno/internal/pkg/archiver/general"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func setupURL(html string) *models.URL {

@@ -8,11 +8,12 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/grafana/pyroscope-go"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/controler"
-	"github.com/internetarchive/Zeno/internal/pkg/ui"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
 	"github.com/spf13/cobra"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler"
+	"github.com/reapertechlabs/zeno/internal/pkg/ui"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
 )
 
 var getHQCmd = &cobra.Command{
@@ -61,7 +62,6 @@ var getHQCmd = &cobra.Command{
 					pyroscope.ProfileBlockDuration,
 				},
 			})
-
 			if err != nil {
 				panic(fmt.Errorf("error starting pyroscope: %w", err))
 			}

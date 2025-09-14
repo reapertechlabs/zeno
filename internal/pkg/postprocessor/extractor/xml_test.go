@@ -10,9 +10,10 @@ import (
 	"strings"
 	"testing"
 
-	generalarchiver "github.com/internetarchive/Zeno/internal/pkg/archiver/general"
-	"github.com/internetarchive/Zeno/pkg/models"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	generalarchiver "github.com/reapertechlabs/zeno/internal/pkg/archiver/general"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 //go:embed testdata/rss2.0.xml
@@ -121,7 +122,7 @@ func TestXML(t *testing.T) {
 			body: `<?xml version="1.0" encoding="UTF-8"?>
                 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + strings.Repeat(`<url><loc>https://example.com/page</loc></url>`, 1000) + `</urlset>`,
 			expected: func() []string {
-				var urls = []string{"http://www.sitemaps.org/schemas/sitemap/0.9"}
+				urls := []string{"http://www.sitemaps.org/schemas/sitemap/0.9"}
 				for range 1000 {
 					urls = append(urls, "https://example.com/page")
 				}
@@ -152,7 +153,6 @@ func TestXML(t *testing.T) {
 				v[11] = "https://blog.archive.org/wp-content/uploads/2025/03/Vanishing-Culture-Prelinger-3.png" // <a> href in description::CDATA
 				v[212] = "https://blog.archive.org/2025/02/06/update-on-the-2024-2025-end-of-term-web-archive/feed/"
 				return v
-
 			}(),
 			hasError: false,
 		},
@@ -166,7 +166,7 @@ func TestXML(t *testing.T) {
 			}
 			resp.Header.Set("Content-Type", "application/xml")
 
-			var URL = new(models.URL)
+			URL := new(models.URL)
 			URL.SetResponse(resp)
 
 			err := generalarchiver.ProcessBody(URL, false, false, 0, os.TempDir(), nil)

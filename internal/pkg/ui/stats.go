@@ -5,7 +5,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
 	"github.com/rivo/tview"
 )
 

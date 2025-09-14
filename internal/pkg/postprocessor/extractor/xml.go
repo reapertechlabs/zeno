@@ -8,8 +8,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 var sitemapMarker = []byte("sitemaps.org/schemas/sitemap/")

@@ -21,14 +21,12 @@ type matchEngine struct {
 	urls    []url.URL
 }
 
-var (
-	globalMatcher = &matchEngine{
-		enabled: false,
-		regexes: make([]*regexp.Regexp, 0),
-		domains: make(map[string]struct{}),
-		urls:    make([]url.URL, 0),
-	}
-)
+var globalMatcher = &matchEngine{
+	enabled: false,
+	regexes: make([]*regexp.Regexp, 0),
+	domains: make(map[string]struct{}),
+	urls:    make([]url.URL, 0),
+}
 
 // Reset the matcher to its initial state
 func Reset() {

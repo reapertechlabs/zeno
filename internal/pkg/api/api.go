@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
 )
 
 var (

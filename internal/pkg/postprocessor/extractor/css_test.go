@@ -6,9 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestCSSParser(t *testing.T) {

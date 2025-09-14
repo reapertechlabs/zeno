@@ -10,16 +10,18 @@ import (
 	"testing"
 	"time"
 
-	"github.com/internetarchive/Zeno/cmd"
-	"github.com/internetarchive/Zeno/e2e/log"
 	"github.com/spf13/cobra"
 
-	"github.com/internetarchive/Zeno/internal/pkg/controler"
-	zenolog "github.com/internetarchive/Zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/cmd"
+	"github.com/reapertechlabs/zeno/e2e/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler"
+	zenolog "github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
-var DefaultTimeout = 60 * time.Second
-var DialTimeout = 10 * time.Second
+var (
+	DefaultTimeout = 60 * time.Second
+	DialTimeout    = 10 * time.Second
+)
 
 func cmdZenoGetURL(urls []string) *cobra.Command {
 	cmd := cmd.Prepare()
@@ -82,7 +84,6 @@ func StartHandleLogRecord(t *testing.T, wg *sync.WaitGroup, rm log.RecordMatcher
 	if err != nil {
 		t.Error("failed to listen to logs:", err)
 	}
-
 }
 
 // WaitForGoroutines waits for ANY of the following conditions to be met:

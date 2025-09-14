@@ -3,8 +3,9 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
 	"github.com/spf13/cobra"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 var cfg *config.Config
@@ -57,6 +58,7 @@ func Prepare() *cobra.Command {
 
 	return rootCmd
 }
+
 func Run() error {
 	cmd := Prepare()
 	return cmd.Execute()

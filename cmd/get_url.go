@@ -3,10 +3,11 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/controler"
-	"github.com/internetarchive/Zeno/internal/pkg/ui"
 	"github.com/spf13/cobra"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler"
+	"github.com/reapertechlabs/zeno/internal/pkg/ui"
 )
 
 var getURLCmd = &cobra.Command{

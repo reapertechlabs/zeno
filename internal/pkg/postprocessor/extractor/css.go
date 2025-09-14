@@ -8,9 +8,10 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/pkg/models"
 	"go.baoshuo.dev/csslexer"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 // The logger also used in the HTML extractor for CSS related logs.

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 var s3CompatibleServers = []string{

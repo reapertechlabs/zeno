@@ -3,7 +3,7 @@ package extractor
 import (
 	"strings"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 type LinkHeaderExtractor struct{}

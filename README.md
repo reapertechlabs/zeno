@@ -7,7 +7,7 @@ Zeno is a web crawler designed to operate wide crawls or to simply archive one w
 Zeno's key concepts are: portability, performance, simplicity.
 With an emphasis on performance.
 
-It heavily relies on the [gowarc](https://github.com/internetarchive/gowarc) module for traffic recording into [WARC](https://iipc.github.io/warc-specifications/) files.
+It heavily relies on the [gowarc](https://rtlabs.cloud/gowarc) module for traffic recording into [WARC](https://iipc.github.io/warc-specifications/) files.
 
 The name Zeno comes from Zenodotus (Ζηνόδοτος), a Greek grammarian, literary critic, Homeric scholar,
 and the first librarian of the Library of Alexandria.
@@ -15,10 +15,10 @@ and the first librarian of the Library of Alexandria.
 ## Installation
 
 ```bash
-go install github.com/internetarchive/Zeno@latest
+go install github.com/reapertechlabs/zeno@latest
 ```
 
-or utilize our pre-built [release binaries here](https://github.com/internetarchive/Zeno/releases), but do note that we are mainly focused on linux/amd64 support at this time.
+or utilize our pre-built [release binaries here](https://github.com/reapertechlabs/zeno/releases), but do note that we are mainly focused on linux/amd64 support at this time.
 
 ## Quick Start
 

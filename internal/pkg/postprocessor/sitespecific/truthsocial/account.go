@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/extractor"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/extractor"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 type account struct {

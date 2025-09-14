@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	generalarchiver "github.com/internetarchive/Zeno/internal/pkg/archiver/general"
-	"github.com/internetarchive/Zeno/pkg/models"
+	generalarchiver "github.com/reapertechlabs/zeno/internal/pkg/archiver/general"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 //go:embed testdata/InternetArchiveDeveloperPortal.pdf
@@ -26,7 +26,7 @@ func TestPDF(t *testing.T) {
 	}
 	resp.Header.Set("Content-Type", "application/pdf")
 
-	var URL = new(models.URL)
+	URL := new(models.URL)
 	URL.SetResponse(resp)
 
 	err := generalarchiver.ProcessBody(URL, false, false, 0, os.TempDir(), nil)
@@ -57,7 +57,7 @@ func TestCorruptPDF(t *testing.T) {
 	}
 	resp.Header.Set("Content-Type", "application/pdf")
 
-	var URL = new(models.URL)
+	URL := new(models.URL)
 	URL.SetResponse(resp)
 
 	err := generalarchiver.ProcessBody(URL, false, false, 0, os.TempDir(), nil)

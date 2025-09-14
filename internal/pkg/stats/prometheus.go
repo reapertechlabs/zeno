@@ -4,9 +4,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 type prometheusStats struct {

@@ -5,8 +5,9 @@ import (
 	"io"
 	"testing"
 
-	"github.com/internetarchive/Zeno/pkg/models"
 	"golang.org/x/text/encoding/htmlindex"
+
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func Test_charsetNewReader(t *testing.T) {

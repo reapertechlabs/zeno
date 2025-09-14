@@ -17,7 +17,7 @@ func TestShouldConsiderAsAsset(t *testing.T) {
 		{"https://notgithub.com/image.png", false},
 		{"Seconds", false}, // Invalid URL
 		{"https://github.com/internetarchive", false},
-		{"https://github.com/internetarchive/zeno", false},
+		{"https://github.com/reapertechlabs/zeno", false},
 	}
 
 	for _, c := range cases {

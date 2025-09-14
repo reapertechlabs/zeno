@@ -19,16 +19,17 @@ import (
 	"github.com/go-rod/rod"
 	"github.com/go-rod/rod/lib/proto"
 	"github.com/go-rod/stealth"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/connutil"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/reasoncode"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/ratelimiter"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/preprocessor"
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
-	"github.com/internetarchive/Zeno/pkg/models"
-	warc "github.com/internetarchive/gowarc"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	warc "rtlabs.cloud/gowarc"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/connutil"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/reasoncode"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/ratelimiter"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/preprocessor"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 //go:embed behaviors.js

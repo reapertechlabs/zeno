@@ -6,8 +6,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
 )
 
 type stats struct {
@@ -43,7 +43,7 @@ var (
 )
 
 func Init() error {
-	var done = false
+	done := false
 	var err error
 
 	doOnce.Do(func() {

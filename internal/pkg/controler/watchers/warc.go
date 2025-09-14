@@ -5,11 +5,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/archiver"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/controler/pause"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler/pause"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
 )
 
 var (
@@ -23,7 +23,6 @@ func StartWatchWARCWritingQueue(pauseCheckInterval time.Duration, pauseTimeout t
 	if config.Get().WARCWriteAsync {
 		// Watch the WARC writing queue size and pause the pipeline if it exceeds the worker count
 		wwqWg.Go(func() {
-
 			logger := log.NewFieldedLogger(&log.Fields{
 				"component": "controler.warcWritingQueueWatcher.pause",
 			})
@@ -75,7 +74,6 @@ func StartWatchWARCWritingQueue(pauseCheckInterval time.Duration, pauseTimeout t
 
 	// Update the stats every statsUpdateInterval
 	wwqWg.Go(func() {
-
 		logger := log.NewFieldedLogger(&log.Fields{
 			"component": "controler.warcWritingQueueWatcher.stats",
 		})

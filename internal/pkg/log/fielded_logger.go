@@ -14,7 +14,7 @@ type Fields map[string]any
 
 // FieldedLogger allows adding predefined fields to log entries
 type FieldedLogger struct {
-	ctx	   context.Context
+	ctx    context.Context
 	fields *[]any
 }
 

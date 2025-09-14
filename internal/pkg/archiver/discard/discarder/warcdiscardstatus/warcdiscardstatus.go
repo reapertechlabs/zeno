@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 var InWARCDiscardStatus = "Response status code in --warc-discard-status"

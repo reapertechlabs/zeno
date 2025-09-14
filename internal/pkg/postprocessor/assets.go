@@ -5,13 +5,13 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/extractor"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/sitespecific/ina"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/sitespecific/reddit"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/sitespecific/truthsocial"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/extractor"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/sitespecific/ina"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/sitespecific/reddit"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/sitespecific/truthsocial"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 // ExtractAssetsOutlinks extracts assets from the item's body and returns them.

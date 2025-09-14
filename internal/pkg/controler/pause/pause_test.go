@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
 )
 
 func TestBasicPauseResume(t *testing.T) {

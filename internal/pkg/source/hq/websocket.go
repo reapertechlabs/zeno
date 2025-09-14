@@ -10,10 +10,11 @@ import (
 	"time"
 
 	"github.com/gobwas/ws/wsutil"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
 	"github.com/internetarchive/gocrawlhq"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
 )
 
 var unknownMsgTypeErr = errors.New("unknown HQ websocket message type")

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 // All the supported object storage servers

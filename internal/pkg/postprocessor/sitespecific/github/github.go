@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 var logger = log.NewFieldedLogger(&log.Fields{

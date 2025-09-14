@@ -3,7 +3,7 @@ package cloudflare
 import (
 	"net/http"
 
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
 )
 
 var ChallengeDetected = "Detected Cloudflare challenge page"

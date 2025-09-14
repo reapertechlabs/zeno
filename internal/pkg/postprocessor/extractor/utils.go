@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 	"mvdan.cc/xurls/v2"
 )
 

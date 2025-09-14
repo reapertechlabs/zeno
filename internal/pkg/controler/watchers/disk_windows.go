@@ -5,8 +5,9 @@ package watchers
 import (
 	"fmt"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
 	"golang.org/x/sys/windows"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 func CheckDiskUsage(path string) error {

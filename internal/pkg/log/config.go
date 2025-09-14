@@ -15,9 +15,10 @@ import (
 
 	"github.com/MatusOllah/slogcolor"
 	"github.com/fatih/color"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log/ringbuffer"
 	slogmulti "github.com/samber/slog-multi"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log/ringbuffer"
 )
 
 var (

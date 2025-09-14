@@ -1,9 +1,10 @@
 package headless
 
 import (
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/pkg/models"
 	"github.com/ysmood/gson"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 // ZenoBxLogger is a custom logger for Browsertrix behaviors.
@@ -22,7 +23,7 @@ func newBxLogger(item *models.Item) *ZenoBxLogger {
 
 // LogFunc expose itself to browser, so we can use our logger function (Golang) as browsertrix-behaviors' log function (JS).
 func (l *ZenoBxLogger) LogFunc(v gson.JSON) (any, error) {
-	var logger = log.NewFieldedLogger(&log.Fields{
+	logger := log.NewFieldedLogger(&log.Fields{
 		"component": "archiver.headless.bx_logger",
 	})
 

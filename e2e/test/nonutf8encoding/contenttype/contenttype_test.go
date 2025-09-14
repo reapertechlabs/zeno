@@ -6,8 +6,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/internetarchive/Zeno/e2e"
-	"github.com/internetarchive/Zeno/e2e/test/nonutf8encoding"
+	"github.com/reapertechlabs/zeno/e2e"
+	"github.com/reapertechlabs/zeno/e2e/test/nonutf8encoding"
 )
 
 func TestNonUTF8ContentType(t *testing.T) {

@@ -6,11 +6,13 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
-var signalWatcherCtx, signalWatcherCancel = context.WithCancel(context.Background())
-var SignalChan = make(chan os.Signal, 1)
+var (
+	signalWatcherCtx, signalWatcherCancel = context.WithCancel(context.Background())
+	SignalChan                            = make(chan os.Signal, 1)
+)
 
 // WatchSignals listens for OS signals and handles them gracefully
 func WatchSignals() {

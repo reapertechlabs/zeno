@@ -11,13 +11,16 @@ import (
 	"github.com/go-rod/rod"
 	"github.com/go-rod/rod/lib/devices"
 	"github.com/go-rod/rod/lib/launcher"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
-var HeadlessBrowser *rod.Browser
-var Launcher *launcher.Launcher
-var DefaultChromiumRevision = 1465706
+var (
+	HeadlessBrowser         *rod.Browser
+	Launcher                *launcher.Launcher
+	DefaultChromiumRevision = 1465706
+)
 
 const (
 	MagicLatestChromiumRevision = 0

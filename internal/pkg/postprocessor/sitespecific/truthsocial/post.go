@@ -1,6 +1,6 @@
 package truthsocial
 
-import "github.com/internetarchive/Zeno/pkg/models"
+import "github.com/reapertechlabs/zeno/pkg/models"
 
 func IsPostURL(URL *models.URL) bool {
 	return postURLRegex.MatchString(URL.String())

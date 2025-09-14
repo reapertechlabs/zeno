@@ -7,9 +7,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/pkg/models"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestExtractAssets_HTML(t *testing.T) {
@@ -48,7 +49,6 @@ func TestExtractAssets_HTML(t *testing.T) {
 	}
 	if assets[0].Raw != "http://example.com/img.png" {
 		t.Errorf("asset extraction failed for http://example.com/img.png")
-
 	}
 	if assets[1].Raw != "http://example.com/style.css" {
 		t.Errorf("asset extraction failed for http://example.com/style.css")
@@ -73,7 +73,6 @@ func TestSanitizeAssetsOutlinks(t *testing.T) {
 	o2, _ := models.NewURL("javascript:function(){alert('hi')}") // must filter out
 	outlinks := []*models.URL{&o1, &o2}
 	assets, outlinks, err = SanitizeAssetsOutlinks(newItem, assets, outlinks, err)
-
 	if err != nil {
 		t.Errorf("unexpected error  %v", err)
 	}
@@ -98,7 +97,6 @@ func TestRedditAssetQuirks(t *testing.T) {
 	outlinks := []*models.URL{&o1}
 
 	assets, _, err = SanitizeAssetsOutlinks(newItem, assets, outlinks, err)
-
 	if err != nil {
 		t.Errorf("unexpected error  %v", err)
 	}

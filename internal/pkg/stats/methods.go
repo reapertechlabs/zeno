@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 /////////////////////////

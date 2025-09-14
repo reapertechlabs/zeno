@@ -5,7 +5,8 @@ import (
 	"testing"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/internetarchive/Zeno/pkg/models"
+
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func newDocumentWithBaseTag(base string) *goquery.Document {

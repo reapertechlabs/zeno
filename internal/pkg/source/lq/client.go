@@ -6,12 +6,12 @@ import (
 	_ "embed"
 	"path"
 
+	"github.com/google/uuid"
 	_ "github.com/ncruces/go-sqlite3/driver"
 	_ "github.com/ncruces/go-sqlite3/embed"
 
-	"github.com/google/uuid"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/source/lq/sqlc_model"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/source/lq/sqlc_model"
 )
 
 type lqClient struct {

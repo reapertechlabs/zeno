@@ -1,10 +1,8 @@
 package controler
 
-import "github.com/internetarchive/Zeno/pkg/models"
+import "github.com/reapertechlabs/zeno/pkg/models"
 
-var (
-	stageChannels []chan *models.Item
-)
+var stageChannels []chan *models.Item
 
 func makeStageChannel(bufferSize ...int) chan *models.Item {
 	var parsedSize int

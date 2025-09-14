@@ -12,9 +12,9 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gabriel-vasile/mimetype"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
 	"golang.org/x/net/idna"
 	"golang.org/x/text/encoding"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
 )
 
 type URL struct {
@@ -33,7 +33,6 @@ type URL struct {
 
 	documentCache    *goquery.Document // Transformed utf8 document in-memory cache
 	documentEncoding encoding.Encoding // Encoding of the document
-
 }
 
 // NewURL parses a raw URL string and returns a URL object.

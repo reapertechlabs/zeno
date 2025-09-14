@@ -5,10 +5,11 @@ import (
 	"context"
 	"sync"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/reactor"
-	"github.com/internetarchive/Zeno/pkg/models"
 	"github.com/internetarchive/gocrawlhq"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/reactor"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 type HQ struct {

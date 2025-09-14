@@ -9,8 +9,9 @@ import (
 
 	"github.com/ImVexed/fasturl"
 	"github.com/davecgh/go-spew/spew"
-	generalarchiver "github.com/internetarchive/Zeno/internal/pkg/archiver/general"
-	"github.com/internetarchive/Zeno/pkg/models"
+
+	generalarchiver "github.com/reapertechlabs/zeno/internal/pkg/archiver/general"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestJSON(t *testing.T) {
@@ -95,7 +96,7 @@ func TestJSON(t *testing.T) {
 			}
 			resp.Header.Set("Content-Type", "application/json")
 
-			var URL = new(models.URL)
+			URL := new(models.URL)
 			URL.SetResponse(resp)
 
 			err := generalarchiver.ProcessBody(URL, false, false, 0, os.TempDir(), nil)

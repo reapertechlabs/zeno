@@ -6,10 +6,11 @@ import (
 	"sync"
 
 	"github.com/gdamore/tcell/v2"
-	"github.com/internetarchive/Zeno/internal/pkg/controler"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/log/ringbuffer"
 	"github.com/rivo/tview"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/controler"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/log/ringbuffer"
 )
 
 const (

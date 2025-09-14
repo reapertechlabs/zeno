@@ -8,15 +8,14 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
-var (
-	onclickRegex = regexp.MustCompile(`window\.location(?:\.href)?\s*=\s*['"]([^'"]+)['"]`)
-)
+var onclickRegex = regexp.MustCompile(`window\.location(?:\.href)?\s*=\s*['"]([^'"]+)['"]`)
 
 func IsHTML(URL *models.URL) bool {
 	return URL.GetMIMEType() != nil && strings.Contains(URL.GetMIMEType().String(), "html")
@@ -177,7 +176,7 @@ func HTMLAssets(item *models.Item) (assets []*models.URL, err error) {
 
 	// Try to find assets in <a> tags.. this is a bit funky
 	if !slices.Contains(config.Get().DisableHTMLTag, "a") {
-		var validAssetPath = []string{
+		validAssetPath := []string{
 			"static/",
 			"assets/",
 			"asset/",
@@ -186,7 +185,7 @@ func HTMLAssets(item *models.Item) (assets []*models.URL, err error) {
 			"img/",
 		}
 
-		var validAssetAttributes = []string{
+		validAssetAttributes := []string{
 			"href",
 			"data-href",
 			"data-src",
@@ -232,7 +231,7 @@ func HTMLAssets(item *models.Item) (assets []*models.URL, err error) {
 	}
 
 	// Handle video and audio tags
-	var targetElements = []string{}
+	targetElements := []string{}
 	if !slices.Contains(config.Get().DisableHTMLTag, "video") {
 		targetElements = append(targetElements, "video[src]")
 	}

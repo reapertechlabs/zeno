@@ -3,12 +3,13 @@ package discard
 import (
 	"net/http"
 
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/discarder/cloudflare"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/discarder/contentlength"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/discarder/warcdiscardstatus"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/reasoncode"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	warc "github.com/internetarchive/gowarc"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/discarder/cloudflare"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/discarder/contentlength"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/discarder/warcdiscardstatus"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/reasoncode"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 // Builder is a struct that helps build multiple discard hooks into a single one.

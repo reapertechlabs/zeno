@@ -5,22 +5,22 @@ import (
 	"os"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/api"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/consul"
-	"github.com/internetarchive/Zeno/internal/pkg/controler/watchers"
-	"github.com/internetarchive/Zeno/internal/pkg/finisher"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor"
-	"github.com/internetarchive/Zeno/internal/pkg/preprocessor"
-	"github.com/internetarchive/Zeno/internal/pkg/preprocessor/seencheck"
-	"github.com/internetarchive/Zeno/internal/pkg/reactor"
-	"github.com/internetarchive/Zeno/internal/pkg/source"
-	"github.com/internetarchive/Zeno/internal/pkg/source/hq"
-	"github.com/internetarchive/Zeno/internal/pkg/source/lq"
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/api"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/consul"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler/watchers"
+	"github.com/reapertechlabs/zeno/internal/pkg/finisher"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor"
+	"github.com/reapertechlabs/zeno/internal/pkg/preprocessor"
+	"github.com/reapertechlabs/zeno/internal/pkg/preprocessor/seencheck"
+	"github.com/reapertechlabs/zeno/internal/pkg/reactor"
+	"github.com/reapertechlabs/zeno/internal/pkg/source"
+	"github.com/reapertechlabs/zeno/internal/pkg/source/hq"
+	"github.com/reapertechlabs/zeno/internal/pkg/source/lq"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 var sourceInterface source.Source
@@ -35,7 +35,7 @@ var sourceInterface source.Source
  * finisherProduceChan: HQ or LQ → finisher. Send fresh seeds.
  */
 func startPipeline() {
-	if err := os.MkdirAll(config.Get().JobPath, 0755); err != nil {
+	if err := os.MkdirAll(config.Get().JobPath, 0o755); err != nil {
 		fmt.Printf("can't create job directory: %s\n", err)
 		os.Exit(1)
 	}

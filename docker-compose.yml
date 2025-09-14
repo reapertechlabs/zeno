@@ -1,11 +1,13 @@
 services:
-  go-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  zeno:
+    image: ghcr.io/mort666/zeno:latest
+    restart: always
     ports:
-      - "8080:8080"
+      - "8383:8080"
+    environment:
+      CRAWL_URL: "https://the-eye.eu/public/Books/Bibliotheca%20Alexandrina/"
+      CRAWL_DOMAIN: "https://the-eye.eu/public/Books/"
+#      ZENO_JOBID: "80573fb8-7bf4-11f0-990a-22b42bee26f5"
     volumes:
-      - ./start.sh:/app/start.sh
+      - ./entrypoint.sh:/entrypoint.sh
       - ./jobs:/app/jobs
-    command: [ "/bin/sh", "/app/start.sh" ]

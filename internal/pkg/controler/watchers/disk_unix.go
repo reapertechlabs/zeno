@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"syscall"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
 )
 
 func CheckDiskUsage(path string) error {

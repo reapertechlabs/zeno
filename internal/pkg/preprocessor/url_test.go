@@ -3,7 +3,7 @@ package preprocessor
 import (
 	"testing"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestNormalizeURL(t *testing.T) {

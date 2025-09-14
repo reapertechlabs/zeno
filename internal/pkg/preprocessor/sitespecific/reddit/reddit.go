@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 type RedditPreprocessor struct{}

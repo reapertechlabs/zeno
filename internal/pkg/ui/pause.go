@@ -3,7 +3,7 @@ package ui
 import (
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/controler/pause"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler/pause"
 	"github.com/rivo/tview"
 )
 

@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log/ringbuffer"
+	"github.com/reapertechlabs/zeno/internal/pkg/log/ringbuffer"
 )
 
 // Global variables

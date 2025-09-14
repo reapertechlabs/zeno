@@ -2,9 +2,10 @@ package ui
 
 import (
 	"github.com/gdamore/tcell/v2"
-	"github.com/internetarchive/Zeno/internal/pkg/controler/pause"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
 	"github.com/rivo/tview"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/controler/pause"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 var menuModalPageName = "menuModal"

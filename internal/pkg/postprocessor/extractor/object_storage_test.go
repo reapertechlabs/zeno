@@ -6,8 +6,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/internetarchive/Zeno/pkg/models"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func buildTestObjectStorageURLObj(selfURL, xmlBody string, respHeader http.Header) *models.URL {

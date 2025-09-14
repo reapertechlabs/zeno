@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 // WaitGroup is a custom wait group that tracks inflight requests

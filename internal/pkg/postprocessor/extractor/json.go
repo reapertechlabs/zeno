@@ -5,9 +5,10 @@ import (
 	"strings"
 
 	"github.com/ImVexed/fasturl"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/sitespecific/github"
-	"github.com/internetarchive/Zeno/pkg/models"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/sitespecific/github"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func IsJSON(URL *models.URL) bool {

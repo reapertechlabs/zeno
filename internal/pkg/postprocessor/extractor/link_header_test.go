@@ -8,8 +8,8 @@ import (
 	"os"
 	"testing"
 
-	generalarchiver "github.com/internetarchive/Zeno/internal/pkg/archiver/general"
-	"github.com/internetarchive/Zeno/pkg/models"
+	generalarchiver "github.com/reapertechlabs/zeno/internal/pkg/archiver/general"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestExtractURLsFromHeader(t *testing.T) {
@@ -103,7 +103,7 @@ func TestExtractURLsFromHeader(t *testing.T) {
 				},
 			}
 
-			var URL = new(models.URL)
+			URL := new(models.URL)
 			URL.SetResponse(resp)
 
 			// Consume the response body

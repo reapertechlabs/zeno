@@ -5,10 +5,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestFilterURLsByProtocol(t *testing.T) {
@@ -75,7 +76,7 @@ func TestExtractLinksFromPage(t *testing.T) {
 	}
 }
 
-// https://github.com/internetarchive/Zeno/issues/413
+// https://github.com/reapertechlabs/zeno/issues/413
 //
 // There are 2 lines in the HTML that are longer than 64KiB, overflowing the default bufio.Scanner buffer size if we use line-by-line reading.
 func TestExtractLinksFromPageWithLongLines(t *testing.T) {

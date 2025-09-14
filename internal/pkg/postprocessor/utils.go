@@ -3,12 +3,10 @@ package postprocessor
 import (
 	"regexp"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
-var (
-	skipProtocolsRe = regexp.MustCompile(`(?i)^(data|file|javascript|mailto|sms|tel):`)
-)
+var skipProtocolsRe = regexp.MustCompile(`(?i)^(data|file|javascript|mailto|sms|tel):`)
 
 func isStatusCodeRedirect(statusCode int) bool {
 	switch statusCode {

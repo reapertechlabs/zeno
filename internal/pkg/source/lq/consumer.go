@@ -7,12 +7,13 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/reactor"
-	"github.com/internetarchive/Zeno/internal/pkg/source"
-	"github.com/internetarchive/Zeno/internal/pkg/source/lq/sqlc_model"
-	"github.com/internetarchive/Zeno/pkg/models"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/reactor"
+	"github.com/reapertechlabs/zeno/internal/pkg/source"
+	"github.com/reapertechlabs/zeno/internal/pkg/source/lq/sqlc_model"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func (s *LQ) consumer() {
@@ -114,7 +115,7 @@ func (s *LQ) consumerFetcher(ctx context.Context, wg *sync.WaitGroup, urlBuffer 
 				Hops:      URLs[i].Hops,
 				Status:    URLs[i].Status,
 				Timestamp: URLs[i].Timestamp,
-			}: //Deep copy of the URL to ensure pointer alisaing does not cause issues
+			}: // Deep copy of the URL to ensure pointer alisaing does not cause issues
 			}
 		}
 

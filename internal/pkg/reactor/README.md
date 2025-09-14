@@ -9,7 +9,7 @@ A token-based system is used to limit the number of seeds processed concurrently
 ## Installation
 To use the reactor package, import it into your package:
 ```go
-import "github.com/internetarchive/Zeno/pkg/reactor"
+import "github.com/reapertechlabs/zeno/pkg/reactor"
 ```
 
 ## Usage

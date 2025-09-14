@@ -7,7 +7,7 @@ The preprocessor package is designed to be used in a concurrent environment, whe
 ## Installation
 To use the preprocessor package, import it into your package:
 ```go
-import "github.com/internetarchive/Zeno/internal/pkg/preprocessor"
+import "github.com/reapertechlabs/zeno/internal/pkg/preprocessor"
 ```
 
 ## Usage

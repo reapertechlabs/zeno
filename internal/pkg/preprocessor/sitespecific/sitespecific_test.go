@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func TestPreprocessor(t *testing.T) {

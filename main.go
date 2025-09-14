@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/internetarchive/Zeno/cmd"
+	"github.com/reapertechlabs/zeno/cmd"
 )
 
 func main() {

@@ -4,10 +4,11 @@ import (
 	"os"
 	"path"
 
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	warc "github.com/internetarchive/gowarc"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
 )
 
 func startWARCWriter() {

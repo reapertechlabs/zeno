@@ -5,9 +5,10 @@ import (
 	"net/http"
 
 	"github.com/go-rod/rod"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/connutil"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	warc "github.com/internetarchive/gowarc"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/connutil"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 var bodyLogger = log.NewFieldedLogger(&log.Fields{

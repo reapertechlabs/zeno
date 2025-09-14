@@ -6,12 +6,13 @@ import (
 	"strings"
 
 	"github.com/gabriel-vasile/mimetype"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/connutil"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	"github.com/internetarchive/Zeno/pkg/models"
-	warc "github.com/internetarchive/gowarc"
-	"github.com/internetarchive/gowarc/pkg/spooledtempfile"
+	warc "rtlabs.cloud/gowarc"
+	"rtlabs.cloud/gowarc/pkg/spooledtempfile"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/connutil"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func ProcessBody(u *models.URL, disableAssetsCapture, domainsCrawl bool, maxHops int, WARCTempDir string, logger *log.FieldedLogger) error {
@@ -32,7 +33,6 @@ func ProcessBody(u *models.URL, disableAssetsCapture, domainsCrawl bool, maxHops
 
 // ProcessBody processes the body of a URL response, loading it into memory or a temporary file
 func processBody(u *models.URL, disableAssetsCapture, domainsCrawl bool, maxHops int, WARCTempDir string) error {
-
 	// If we are not capturing assets, not extracting outlinks, and domains crawl is disabled
 	// we can just consume and discard the body
 	if disableAssetsCapture && !domainsCrawl && maxHops == 0 {

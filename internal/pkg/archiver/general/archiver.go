@@ -9,15 +9,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/connutil"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/reasoncode"
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/ratelimiter"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/domainscrawl"
-	"github.com/internetarchive/Zeno/internal/pkg/stats"
-	"github.com/internetarchive/Zeno/pkg/models"
-	warc "github.com/internetarchive/gowarc"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/connutil"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/reasoncode"
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/ratelimiter"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/domainscrawl"
+	"github.com/reapertechlabs/zeno/internal/pkg/stats"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func ArchiveItem(item *models.Item, wg *sync.WaitGroup, guard chan struct{}, globalBucketManager *ratelimiter.BucketManager, client *warc.CustomHTTPClient) {

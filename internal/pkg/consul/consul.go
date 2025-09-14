@@ -9,8 +9,9 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/hashicorp/consul/api"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 var ctx, cancel = context.WithCancel(context.Background())

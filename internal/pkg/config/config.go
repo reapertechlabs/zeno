@@ -15,11 +15,12 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/domainscrawl"
-	"github.com/internetarchive/Zeno/internal/pkg/utils"
-	warc "github.com/internetarchive/gowarc"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/domainscrawl"
+	"github.com/reapertechlabs/zeno/internal/pkg/utils"
 )
 
 // Config holds all configuration for our program, parsed from various sources
@@ -143,7 +144,6 @@ type Config struct {
 
 	// Profiling
 	PyroscopeAddress string `mapstructure:"pyroscope-address"`
-	SentryDSN        string `mapstructure:"sentry-dsn"`
 
 	// API
 	APIPort int  `mapstructure:"api-port"`
@@ -318,7 +318,7 @@ func GenerateCrawlConfig() error {
 			version.Version = version.Version[:7]
 		}
 
-		config.UserAgent = "Mozilla/5.0 (compatible; archive.org_bot +http://archive.org/details/archive.org_bot) Zeno/" + version.Version + " warc/" + version.WarcVersion
+		config.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
 		slog.Info("User-Agent set to", "user-agent", config.UserAgent)
 	}
 

@@ -5,10 +5,11 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/internetarchive/Zeno/internal/pkg/archiver/discard/discarder/contentlength"
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	warc "github.com/internetarchive/gowarc"
+	warc "rtlabs.cloud/gowarc"
+
+	"github.com/reapertechlabs/zeno/internal/pkg/archiver/discard/discarder/contentlength"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 // BodyWithConn is a wrapper around resp.Body that also holds a reference to the warc.CustomConnection

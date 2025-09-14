@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/internetarchive/Zeno/internal/pkg/controler/pause"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/controler/pause"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
 )
 
 var (

@@ -3,7 +3,7 @@ package hq
 import (
 	"context"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 	"github.com/internetarchive/gocrawlhq"
 )
 

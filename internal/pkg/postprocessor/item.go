@@ -3,11 +3,11 @@ package postprocessor
 import (
 	"strings"
 
-	"github.com/internetarchive/Zeno/internal/pkg/config"
-	"github.com/internetarchive/Zeno/internal/pkg/log"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/domainscrawl"
-	"github.com/internetarchive/Zeno/internal/pkg/postprocessor/extractor"
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/internal/pkg/config"
+	"github.com/reapertechlabs/zeno/internal/pkg/log"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/domainscrawl"
+	"github.com/reapertechlabs/zeno/internal/pkg/postprocessor/extractor"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func postprocessItem(item *models.Item) []*models.Item {

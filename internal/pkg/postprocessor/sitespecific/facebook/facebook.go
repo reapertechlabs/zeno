@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/internetarchive/Zeno/pkg/models"
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 func IsFacebookPostURL(URL *models.URL) bool {

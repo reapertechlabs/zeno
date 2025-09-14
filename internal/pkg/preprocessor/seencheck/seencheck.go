@@ -6,8 +6,9 @@ import (
 	"strconv"
 	"sync/atomic"
 
-	"github.com/internetarchive/Zeno/pkg/models"
 	"github.com/philippgille/gokv/leveldb"
+
+	"github.com/reapertechlabs/zeno/pkg/models"
 )
 
 // Seencheck holds the Seencheck database and the seen counter
@@ -16,9 +17,7 @@ type Seencheck struct {
 	DB    leveldb.Store
 }
 
-var (
-	globalSeencheck *Seencheck
-)
+var globalSeencheck *Seencheck
 
 func Start(jobPath string) (err error) {
 	count := int64(0)
